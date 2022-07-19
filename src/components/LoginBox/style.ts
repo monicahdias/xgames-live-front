@@ -43,8 +43,8 @@ export const LoginBoxForm = styled.form`
 `;
 
 export const Buttons = styled.div`
-  ${({theme}) => css`
-    background-color: ${theme.colors.baseBg1};
+  ${() => css`
+    background-color: none;
     width: 10rem;
     margin: 0;
     border: none;

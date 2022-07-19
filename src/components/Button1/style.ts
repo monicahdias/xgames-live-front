@@ -5,7 +5,6 @@ export const Button1 = styled.button`
     background: ${theme.colors.primaryColor};
     border: none;
     border-radius: 6px;
-    color: ${theme.colors.textButton};
     display: flex;
     justify-content: center;
     align-items: center;
