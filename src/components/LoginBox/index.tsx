@@ -1,5 +1,5 @@
 import * as S from "./style";
-import logo from "assets/imgs/logo.png";
+import logo from "assets/images/logo.png";
 import Button1 from "components/Button1";
 import Button2 from "components/Button2";
 import {useState} from "react";

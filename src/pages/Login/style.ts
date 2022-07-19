@@ -1,5 +1,5 @@
 import styled, {css} from "styled-components";
-import background from "assets/imgs/background-image.png";
+import background from "assets/images/background-image.png";
 
 export const Login = styled.section`
   ${({theme}) => css`

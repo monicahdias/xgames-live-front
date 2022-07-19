@@ -1,5 +1,5 @@
 import * as S from "./style";
-import image from "assets/imgs/image.jpg";
+import image from "assets/images/image.jpg";
 
 const GameCard = () => {
   return (
