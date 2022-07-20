@@ -86,11 +86,3 @@ export const Button = styled.div`
     margin: 1.5rem 1rem 1rem 1rem;
   `}
 `;
-
-export const HomeContentHeader = styled.div`
-  ${() => css`
-    background-color: none;
-    display: flex;
-    justify-content: flex-start;
-  `}
-`;
