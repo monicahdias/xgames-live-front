@@ -2,60 +2,78 @@ import * as S from "./style";
 import logo from "assets/images/logo.png";
 import Button1 from "components/Button1";
 import Button2 from "components/Button2";
-import {useState} from "react";
+import ButtonGoToHome from "components/ButtonGoToHome";
+import React, {useState} from "react";
+import {loginService} from "services/authService";
+import swal from "sweetalert";
+import {userLoginObj} from "types/api/User";
+import {useNavigate} from "react-router-dom";
 
-interface userLogin {
-  email: string;
-  password: string;
-}
-
-const LoginBox = () => {
+const LoginBox = (props: any) => {
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
 
-  const handleChangesValues = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const nameElement = event.target.name;
-    const typedElement = event.target.value;
+  let navigate = useNavigate();
 
-    setValues((values: userLogin) => {
-      return {
-        ...values,
-        [event.target.name]: event.target.value,
-      };
-    });
+  const handleChangeValues = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValues((values: userLoginObj) => ({
+      ...values,
+      [event.target.name]: event.target.value,
+    }));
   };
 
-  const loginUser = (event: React.SyntheticEvent) => {
+  const loginUser = async (event: React.SyntheticEvent) => {
     event.preventDefault();
+    const response = await loginService.login(values);
+    const jwt = response.data.token;
+
+    if (jwt) {
+      localStorage.setItem("jwtLocalStorage", jwt);
+      swal({
+        title: "Welcome!",
+        icon: "success",
+        timer: 3000,
+      });
+      navigate("/user");
+    }
+    console.log(response.data);
     console.log(values);
   };
 
+  function goToRegister() {
+    navigate("/createaccount");
+  }
+
   return (
-    <S.LoginBox>
+    <S.LoginBox onSubmit={loginUser}>
+      <ButtonGoToHome />
       <S.LoginBoxLogo>
         <S.LoginBoxLogoImg src={logo} alt="logo" />
       </S.LoginBoxLogo>
-      <S.LoginBoxForm onSubmit={loginUser}>
+      <S.LoginBoxForm>
         <input
-          type="text"
+          type="email"
           name="email"
           id="email"
           placeholder="E-mail"
-          onChange={handleChangesValues}
+          onChange={handleChangeValues}
           autoComplete="false"
+          required
         />
         <input
           type="password"
           name="password"
           id="password"
           placeholder="Password"
-          onChange={handleChangesValues}
+          onChange={handleChangeValues}
+          required
         />
         <S.Buttons>
-          <Button1 value="LOG IN" type="submit" />
-          <Button2 value="REGISTER" type="button" />
+          <Button1 value="LOG IN" type="submit" onSubmit={loginUser} />
+
+          <Button2 value="REGISTER" type="button" onClick={goToRegister} />
         </S.Buttons>
       </S.LoginBoxForm>
     </S.LoginBox>
