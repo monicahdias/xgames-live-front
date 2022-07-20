@@ -4,17 +4,23 @@ const findAllService = {
   allGames: () =>
     api
       .get("/game")
-      .then((response: any) => response)
+      .then((response: any) => {
+        return response;
+      })
       .catch((error: any) => console.log("Error: ", error)),
   allGenres: () =>
     api
       .get("/genre")
-      .then((response: any) => response)
+      .then((response: any) => {
+        return response;
+      })
       .catch((error: any) => console.log("Error: ", error)),
   allProfiles: () =>
     api
       .get("/profile")
-      .then((response: any) => response)
+      .then((response: any) => {
+        return response;
+      })
       .catch((error: any) => console.log("Error: ", error)),
 };
 
@@ -22,7 +28,9 @@ const findOneService = {
   findUser: () =>
     api
       .get("/user")
-      .then((response: any) => response)
+      .then((response: any) => {
+        return response;
+      })
       .catch((error: any) => console.log("Error: ", error)),
 };
 
