@@ -1,67 +1,37 @@
 import * as S from "./style";
 import logo from "assets/images/logo.png";
+import {useState} from "react";
 import Button1 from "components/Button1";
-import Button2 from "components/Button2";
-import Games from "components/Games";
-import {useEffect, useState} from "react";
-// import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 
-interface Games {
-  id: string;
-  title: string;
-  coverImageUrl: string;
-  description: string;
-  year: number;
-  imdbScore: number;
-  trailerYouTubeUrl: string;
-  gameplayYouTubeUrl: string;
-  genreName?: string;
-}
-
-const Home = () => {
-  const [games, setGames] = useState<Games[]>([]);
-
-  // const getAllGames = async () => {
-  //   const response = await axios.get(
-  //     "https://xgames-live-server.herokuapp.com/api/game"
-  //   );
-  //   setGames(response.data);
-  // };
-
-  // try {
-  //   const result = await axios.get(
-  //     "https://xgames-live-server.herokuapp.com/api/game",
-  //     {}
-  //   );
-  //   console.log(result.data);
-  // } catch (err: any) {
-  //   alert(err.message);
-  // }
-  // useEffect(() => {
-  //   getAllGames();
-  // });
-
+function Home() {
+  const handleClick = () => {
+    window.location.href = "/signup";
+  };
   return (
     <S.Home>
       <S.HomeContent>
-        <S.HomeHeader>
-          <S.HomeContentLogo>
-            <S.HomeLogoImage src={logo} alt="Logo" />
-          </S.HomeContentLogo>
-          <S.HomeButtons>
-            <Button1 value="LOG IN" type="button" />
-            <Button2 value="SIGN UP" type="button" />
-          </S.HomeButtons>
-        </S.HomeHeader>
-        <S.HomeGames>
-          <Games />
-          <Games />
-          <Games />
-          <Games />
-        </S.HomeGames>
+        <S.ButtonBack />
+        <article>Welcome to</article>
+
+        <S.HomeContentLogo>
+          <S.HomeLogoImage src={logo} alt="Logo" />
+        </S.HomeContentLogo>
+        <article>
+          <p>If you want to have a gaming experience</p>
+        </article>
+        <S.Button>
+          <Button1 value="JOIN US" type="button" onClick={handleClick} />
+        </S.Button>
+
+        <article>
+          <p>
+            or <Link to="/login">sign in</Link>
+          </p>
+        </article>
       </S.HomeContent>
     </S.Home>
   );
-};
+}
+
 export default Home;
