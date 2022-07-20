@@ -3,6 +3,7 @@ export enum RoutePath {
   LOGIN = "/login",
   HOMEPAGE = "/homepage/:id",
   SIGNUP = "/signup",
+  USER = "/user",
   PROFILE = "/profile/:id",
   CREATEGAME = "/creategame",
   CREATEGENRE = "/creategenre",
