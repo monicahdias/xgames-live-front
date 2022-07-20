@@ -3,6 +3,7 @@ import logo from "assets/images/logo.png";
 import {useState} from "react";
 import Button1 from "components/Button1";
 import {Link} from "react-router-dom";
+import ButtonGoToHome from "components/ButtonGoToHome";
 
 function Home() {
   const handleClick = () => {
@@ -11,7 +12,6 @@ function Home() {
   return (
     <S.Home>
       <S.HomeContent>
-        <S.ButtonBack />
         <article>Welcome to</article>
 
         <S.HomeContentLogo>

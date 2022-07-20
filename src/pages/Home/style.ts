@@ -22,10 +22,13 @@ export const HomeContent = styled.main`
     ${theme.mixins.overlay()};
     display: flex;
     flex-direction: column;
-    align-items: center;
+
     justify-content: center;
 
     article {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       font-family: ${constants.bodyFontFamily};
       color: ${colors.textColor};
       font-size: 2.3rem;
@@ -84,25 +87,10 @@ export const Button = styled.div`
   `}
 `;
 
-export const ButtonBack = styled.button`
-  ${({theme}) => css`
-    width: 30%;
-    height: 40px;
-
-    margin: 10px 0;
-    border-radius: 2px;
-    cursor: pointer;
-    border: none
-    background-color: none
-    font-size: 1em;
-    transition: all 0.3s;
-    font-weight: bold;
-    box-shadow: 3px 3px 6px 3px ${theme.colors.primaryColorShadow};
-
-    color: ${theme.colors.textColor};
-    :hover {
-      box-shadow: 3px 3px 6px 3px ${theme.colors.secondaryColorShadow};
-      color: ${theme.colors.textColor};
-    }
+export const HomeContentHeader = styled.div`
+  ${() => css`
+    background-color: none;
+    display: flex;
+    justify-content: flex-start;
   `}
 `;
