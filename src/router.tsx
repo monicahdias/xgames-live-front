@@ -3,6 +3,7 @@ import {RoutePath} from "types/routes";
 import Home from "pages/Home/index";
 import Login from "pages/Login/index";
 import Homepage from "pages/Homepage/index";
+import User from "pages/User/index";
 
 const Router = () => {
   return (
@@ -10,6 +11,7 @@ const Router = () => {
       <Route path={RoutePath.HOME} element={<Home />} />
       <Route path={RoutePath.LOGIN} element={<Login />} />
       <Route path={RoutePath.HOMEPAGE} element={<Homepage />} />
+      <Route path={RoutePath.USER} element={<User />} />
     </Routes>
   );
 };
