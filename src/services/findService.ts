@@ -8,6 +8,7 @@ const findAllService = {
         return response;
       })
       .catch((error: any) => console.log("Error: ", error)),
+
   allGenres: () =>
     api
       .get("/genre")
@@ -15,6 +16,7 @@ const findAllService = {
         return response;
       })
       .catch((error: any) => console.log("Error: ", error)),
+
   allProfiles: () =>
     api
       .get("/profile")
@@ -40,11 +42,13 @@ const findByIdService = {
       .get(`/profile/${id}`)
       .then((response: any) => response)
       .catch((error: any) => console.log("Error: ", error)),
+
   findGameById: (id: string) =>
     api
       .get(`/game/${id}`)
       .then((response: any) => response)
       .catch((error: any) => console.log("Error: ", error)),
+
   findUserById: (id: string) =>
     api
       .get(`/user/${id}`)

@@ -36,7 +36,7 @@ const LoginBox = (props: any) => {
         icon: "success",
         timer: 3000,
       });
-      navigate("/user");
+      navigate("/homepage");
     }
     console.log(response.data);
     console.log(values);
