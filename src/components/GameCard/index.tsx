@@ -1,11 +1,12 @@
 import * as S from "./style";
-import image from "assets/images/image.jpg";
 
-const GameCard = () => {
+const GameCard = ({data}: any) => {
   return (
     <S.GameCard>
       <S.GameCardContent>
-        <S.GameCardImage src={image} alt="image" />
+        <S.GameCardImage src={data.coverImageUrl} alt="image" />
+        <h3>{data.title}</h3>
+        <p>{data.imdbScore}</p>
         <S.GameCardRating />
       </S.GameCardContent>
     </S.GameCard>
