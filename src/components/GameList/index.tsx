@@ -1,22 +1,22 @@
 import GameCard from "components/GameCard";
 import {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {findAllService} from "services/findService";
 import swal from "sweetalert";
-import {gameDescObj} from "types/api/Game";
+import {gameObj} from "types/api/Game";
 import * as S from "./style";
 
 const GameList = () => {
   const navigate = useNavigate();
-  const [games, setGames] = useState<gameDescObj[]>([]);
+  const [game, setGame] = useState<gameObj[]>([]);
 
   useEffect(() => {
-    getAll();
+    allGames();
   }, []);
 
   const jwt = localStorage.getItem("jwtLocalStorage");
 
-  const getAll = async () => {
+  const allGames = async () => {
     if (!jwt) {
       swal({
         title: "ERRO",
@@ -36,13 +36,17 @@ const GameList = () => {
         });
       } else {
         console.log(response.data);
-        setGames(response.data);
+        setGame(response.data);
       }
     }
   };
   return (
     <S.GameList>
-      <GameCard />
+      {game.map((game: gameObj, index) => (
+        <Link to={`/homepage/${game.id}`} state={{id: game.id}} key={index}>
+          <GameCard data={game} />
+        </Link>
+      ))}
     </S.GameList>
   );
 };
